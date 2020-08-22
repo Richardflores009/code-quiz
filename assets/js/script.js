@@ -3,44 +3,53 @@ var startBtn = document.getElementById('start')
 var questionEl = document.getElementById('question')
 var pageContent = document.getElementById('page-content')
 var divEl = document.getElementById("quiz");
+var initialEl = document.getElementById("input")
+var formEl = document.createElement("form")
+var initialEl = document.createElement("input")
+var fButtonEl = document.createElement("button")
+var ScoreEl = document.createElement("p")
+var final = document.createElement("ul")
+var goHomeEl = document.createElement("button")
 var currentQuestion = 0
 var points = 0
 
 var finalScore = function (initialEl) {
-    var LocalStore = {
+    divEl.innerHTML = ' ';
+    var newScore = {
         points: points,
         name: initialEl.value
     }
-    localStorage.setItem("localScore", JSON.stringify(LocalStore));
+
+    var scoresArray = JSON.parse(localStorage.getItem("highScores"))
+    if (scoresArray == null) {
+        scoresArray = []
+    }
+    console.log(scoresArray)
+    scoresArray.push(newScore)
+    localStorage.setItem("highScores", JSON.stringify(scoresArray));
+    final.innerHTML = '';
     //localStorage.setItem("localInitial", localInitial)
-    var savedScores = localStorage.getItem("localScore")
-    savedScores = JSON.parse(savedScores);
-    console.log(savedScores)
-    divEl.innerHTML = ' ';
-    var final = document.createElement("h2")
-    divEl.appendChild(final)
-    final.textContent = savedScores.name + "-" + savedScores.points
+    for (var i = 0; i < scoresArray.length; i++) {
+        final.innerHTML += `<li>${scoresArray[i].points} - ${scoresArray[i].name}</li>`
+    }
+
     questionEl.textContent = "High Scores"
-    var goHomeEl = document.createElement("button")
     goHomeEl.textContent = "go home"
+    divEl.appendChild(final)
     divEl.appendChild(goHomeEl)
+
 }
 
-var highScore = function (initialEl, timeInterval) {
+var highScore = function () {
 
-    formEl = document.createElement("form")
-    initialEl = document.createElement("input")
-    fButtonEl = document.createElement("button")
-    ScoreEl = document.createElement("p")
     ScoreEl.textContent = "Your final score is " + points;
     formEl.appendChild(initialEl)
     console.log(fButtonEl)
-    fButtonEl.setAttribute('onclick', finalScore(initialEl)); // for FF
+    //fButtonEl.setAttribute('onclick', finalScore(initialEl)); // for FF
     fButtonEl.onclick = function () { finalScore(initialEl) }; // for IE
     fButtonEl.textContent = "Submit"
     initialEl.setAttribute("type", "text")
     initialEl.setAttribute("placeholder", "Enter Initials")
-
     divEl.appendChild(ScoreEl)
     divEl.appendChild(formEl)
     divEl.appendChild(fButtonEl)
