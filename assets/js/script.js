@@ -1,17 +1,22 @@
+//window.reload()
 var timerEl = document.getElementById('countdown')
 var startBtn = document.getElementById('start')
 var questionEl = document.getElementById('question')
 var pageContent = document.getElementById('page-content')
 var divEl = document.getElementById("quiz");
 var initialEl = document.getElementById("input")
+var viewHs = document.getElementById("highscore")
 var formEl = document.createElement("form")
 var initialEl = document.createElement("input")
 var fButtonEl = document.createElement("button")
 var ScoreEl = document.createElement("p")
 var final = document.createElement("ul")
 var goHomeEl = document.createElement("button")
+var clearEl = document.createElement("button")
 var currentQuestion = 0
 var points = 0
+
+viewHs.setAttribute("onclick", "window.location.assign(finalScore(initialEl))")
 
 var finalScore = function (initialEl) {
     divEl.innerHTML = ' ';
@@ -30,26 +35,36 @@ var finalScore = function (initialEl) {
     final.innerHTML = '';
     //localStorage.setItem("localInitial", localInitial)
     for (var i = 0; i < scoresArray.length; i++) {
-        final.innerHTML += `<li>${scoresArray[i].points} - ${scoresArray[i].name}</li>`
+        final.innerHTML += `<li id="final-hi-id">${scoresArray[i].name} - ${scoresArray[i].points}</li>`
     }
 
     questionEl.textContent = "High Scores"
     goHomeEl.textContent = "go home"
+    clearEl.textContent = "Clear High Scores"
+    goHomeEl.setAttribute("id", "home-bt-id")
+    goHomeEl.setAttribute("onclick", "location.reload();")
+    clearEl.setAttribute("id", "home-bt-id")
+    clearEl.setAttribute("onclick", "localStorage.clear();")
     divEl.appendChild(final)
     divEl.appendChild(goHomeEl)
+    divEl.appendChild(clearEl)
+
 
 }
 
 var highScore = function () {
 
     ScoreEl.textContent = "Your final score is " + points;
+    ScoreEl.setAttribute("id", "score-id")
     formEl.appendChild(initialEl)
     console.log(fButtonEl)
     //fButtonEl.setAttribute('onclick', finalScore(initialEl)); // for FF
     fButtonEl.onclick = function () { finalScore(initialEl) }; // for IE
     fButtonEl.textContent = "Submit"
+    fButtonEl.setAttribute("id", "submit-id")
     initialEl.setAttribute("type", "text")
     initialEl.setAttribute("placeholder", "Enter Initials")
+    initialEl.setAttribute("id", "form-id")
     divEl.appendChild(ScoreEl)
     divEl.appendChild(formEl)
     divEl.appendChild(fButtonEl)
@@ -85,7 +100,7 @@ var myQuestions = [
 ]
 
 function countdown() {
-    var timeLeft = 75;
+    var timeLeft = 5;
 
     // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
     var timeInterval = setInterval(function () {
@@ -147,6 +162,7 @@ var startQuiz = function () {
             buttonEl.textContent = currentAns[i];
             //set value of button to the index of the answer
             buttonEl.setAttribute("value", i)
+            buttonEl.setAttribute("id", "answer-id")
             // connect button to list and list to unordered list
             liEl.appendChild(buttonEl);
             ulEl.appendChild(liEl);
@@ -170,7 +186,6 @@ var buttonClick = function () {
     // var val = buttonEl.getAttribute("value")
     console.log(myQuestions[currentQuestion].correctAnswer)
     if (this.value === myQuestions[currentQuestion].correctAnswer.toString()) {
-        window.alert("correct answer")
         points = points + 10
         currentQuestion++
         startQuiz()
@@ -180,5 +195,8 @@ var buttonClick = function () {
         startQuiz()
     }
 }
+
+//buttonEl.addEventListener("submit", finalScore);
+
 
 
