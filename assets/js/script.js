@@ -13,10 +13,11 @@ var ScoreEl = document.createElement("p")
 var final = document.createElement("ul")
 var goHomeEl = document.createElement("button")
 var clearEl = document.createElement("button")
+var timeLeft = 75;
 var currentQuestion = 0
 var points = 0
 
-viewHs.setAttribute("onclick", "window.location.assign(finalScore(initialEl))")
+viewHs.setAttribute("onclick", "finalScore(initialEl)")
 
 var finalScore = function (initialEl) {
     divEl.innerHTML = ' ';
@@ -71,6 +72,7 @@ var highScore = function () {
 
 }
 
+
 var myQuestions = [
     {
         question: "How do you spell JavaScript?",
@@ -78,19 +80,19 @@ var myQuestions = [
         correctAnswer: 2
     },
     {
-        question: "question 2",
-        answers: ["1", "2", "true", "4"],
+        question: "Who invented JavaScript?",
+        answers: ["Douglas Crockford", "Sheryl Sandberg", "Brendan Eich"],
         correctAnswer: 2
     },
     {
-        question: "question 3",
-        answers: ["1", "2", "3", "true"],
+        question: "Which one of these is a JavaScript package manager?",
+        answers: ["Node.js", "TypeScript", "npm", "hpv"],
+        correctAnswer: 2
+    },
+    {
+        question: "Which tool can you use to ensure code quality?",
+        answers: ["Angular", "jQuery", "RequireJS", "ESLint"],
         correctAnswer: 3
-    },
-    {
-        question: "question 4",
-        answers: ["1", "2", "true", "4"],
-        correctAnswer: 2
     },
     {
         question: "All Done",
@@ -100,7 +102,7 @@ var myQuestions = [
 ]
 
 function countdown() {
-    var timeLeft = 5;
+
 
     // Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
     var timeInterval = setInterval(function () {
@@ -113,7 +115,7 @@ function countdown() {
             timeLeft--;
         } else if (myQuestions[currentQuestion].question === "All Done") {
             clearInterval(timeInterval)
-        } else if (timeLeft === 0) {
+        } else if (timeLeft <= 0) {
             questionEl.textContent = 'You are a failure';
             divEl.innerHTML = '';
             clearInterval(timeInterval)
@@ -184,13 +186,15 @@ var startQuiz = function () {
 var buttonClick = function () {
     // check value of element
     // var val = buttonEl.getAttribute("value")
+    console.log("currentQuestion")
+    console.log("this.value", this.value)
     console.log(myQuestions[currentQuestion].correctAnswer)
     if (this.value === myQuestions[currentQuestion].correctAnswer.toString()) {
         points = points + 10
         currentQuestion++
         startQuiz()
     } else {
-        //timeLeft = timeLeft - 20
+        timeLeft = timeLeft - 25
         currentQuestion++
         startQuiz()
     }
