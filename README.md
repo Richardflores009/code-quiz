@@ -5,8 +5,7 @@ Week 4: Challenge
 ## Description 
 ******************************************************************************************************************************************************************************************************************************
 
-This deployed application link contains a pre-existing website that's code has been refracted. On the HTML side semantic elements were added and HTML elements were made to follow a logical structure that is independent of styling. images have accessibility attributes and headings fall into sequential order. Lastly I have added a concise descriptive title for the webpage. 
-
+This deployed application link contains a code quiz that when you click the start button the timer will start and you are presented with questions. When you answer a question you are presented with another question. When you answer incorrectly time is deducted. If the questions are answered or you run out of time it is game over. When you finish you will enter initials and be taken to a highscore screen.
 
 ## Screenshot
 ******************************************************************************************************************************************************************************************************************************
