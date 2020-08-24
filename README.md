@@ -1,6 +1,6 @@
 # code-quiz
 ******************************************************************************************************************************************************************************************************************************
-Week 1: Challenge
+Week 4: Challenge
 
 ## Description 
 ******************************************************************************************************************************************************************************************************************************
@@ -11,13 +11,19 @@ This deployed application link contains a pre-existing website that's code has b
 ## Screenshot
 ******************************************************************************************************************************************************************************************************************************
 
-### Top screenshot of webpage:
+### Start Screen:
 ![alt text](https://github.com/Richardflores009/code-quiz/blob/master/assets/Images/Screen%20Shot%202020-08-23%20at%2018.46.16.png "Top of webpage")
 
-### Bottom screenshot of webpage:
-![alt text](https://github.com/Richardflores009/Horiseon/blob/master/assets/images/Screen%20Shot%202020-07-31%20at%2017.40.30.png "Bottom of webpage")
+### Enter Question Screen:
+![alt text](https://github.com/Richardflores009/code-quiz/blob/master/assets/Images/Screen%20Shot%202020-08-23%20at%2018.46.27.png "Bottom of webpage")
+
+### Initials Screen:
+![alt text](https://github.com/Richardflores009/code-quiz/blob/master/assets/Images/Screen%20Shot%202020-08-23%20at%2018.46.38.png "Bottom of webpage")
+
+### High Score screen:
+![alt text](https://github.com/Richardflores009/code-quiz/blob/master/assets/Images/Screen%20Shot%202020-08-23%20at%2018.46.48.png "Bottom of webpage")
 
 
 ## Link to deployed application
 ******************************************************************************************************************************************************************************************************************************
-[Horiseon webpage link] (https://richardflores009.github.io/Horiseon/)
+[Horiseon webpage link] (https://richardflores009.github.io/code-quiz/#)
